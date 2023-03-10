@@ -1,0 +1,9 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/soulforger0/simple_linear_train', 'app']
+- name: 'python:3.8-slim-buster'
+  entrypoint: 'python'
+  args: ['-m', 'pip', 'install', '-r', 'app/requirements.txt']
+- name: 'python:3.8-slim-buster'
+  entrypoint: 'python'
+  args: ['app/training_data_pipe.py']
