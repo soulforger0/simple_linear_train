@@ -10,6 +10,14 @@ steps:
     'run',
     '--rm',
     'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
+    'pytest',
+    'app/unit_test_trainpipe.py'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [
+    'run',
+    '--rm',
+    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
     'python',
     'app/training_data_pipe.py'
   ]
