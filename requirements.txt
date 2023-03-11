@@ -3,4 +3,3 @@ scipy
 numpy
 matplotlib
 pytest
-google-cloud-storage
