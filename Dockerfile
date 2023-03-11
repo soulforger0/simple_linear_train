@@ -7,7 +7,7 @@ RUN apt-get update && \
 
 # Install the Google Cloud SDK and gsutil
 RUN curl https://sdk.cloud.google.com | bash && \
-    exec -l $SHELL && \
+    exec $SHELL && \
     gcloud components install gsutil
 
 WORKDIR /app
