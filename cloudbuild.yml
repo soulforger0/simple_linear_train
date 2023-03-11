@@ -18,6 +18,7 @@ steps:
     'run',
     '--rm',
     'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
-    'python',
-    'app/training_data_pipe.py'
+    'sh',
+    '-c',
+    'python app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
   ]
