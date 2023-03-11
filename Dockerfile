@@ -1,10 +1,14 @@
 FROM python:3.9-slim-buster
 
-# Install the Google Cloud SDK and dependencies
-RUN sudo apt-get install google-cloud-sdk
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y curl gnupg && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install gsutil
-RUN gcloud components install gsutil
+# Install the Google Cloud SDK and gsutil
+RUN curl https://sdk.cloud.google.com | bash && \
+    exec -l $SHELL && \
+    gcloud components install gsutil
 
 WORKDIR /app
 
