@@ -15,16 +15,16 @@ steps:
     'app/unit_test_trainpipe.py'
   ]
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: [
-    'run',
-    '--rm',
-    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
-    'bash',
-    '-c',
-    #'python3 app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
-    'python3 app/training_data_pipe.py'
-  ]
+#- name: 'gcr.io/cloud-builders/docker'
+#  args: [
+#    'run',
+#    '--rm',
+#    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
+#    'bash',
+#    '-c',
+#    #'python3 app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
+#    'python3 app/training_data_pipe.py'
+#  ]
   
 - name: 'gcr.io/$PROJECT_ID/simple-linear-trainpipe'
   entrypoint: 'bash'
