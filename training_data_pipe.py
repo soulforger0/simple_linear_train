@@ -167,7 +167,7 @@ def model_eval(model, diabetes_X_test, diabetes_y_test):
         shutil.copy(file_path, dest_path)
         
         # copy into workspace too
-        dest_path = '/workspace/prod_model'
+        dest_path = '/workspace'
         shutil.copy(file_path, dest_path)
         
         from os import listdir
