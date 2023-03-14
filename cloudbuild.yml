@@ -24,4 +24,4 @@ steps:
     'python3 app/training_data_pipe.py'
   ]
 - name: gcr.io/cloud-builders/gsutil
-  args: ['rsync', "-r", "-d", './app/prod_model/', 'gs://prod_model']
+  args: ['rsync', "-r", "-d", 'app/prod_model/', 'gs://prod_model']
