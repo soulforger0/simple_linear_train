@@ -126,10 +126,12 @@ def model_eval(model, diabetes_X_test, diabetes_y_test):
     Parameters
     ----------
     model : TYPE SimpleLinearRegression class model
+    diabetes_X_test : X test dataset
+    diabetes_y_test : y test dataset
 
     Returns
     -------
-    None.
+    best model file name.
 
     """
     
