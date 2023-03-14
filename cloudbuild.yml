@@ -30,7 +30,9 @@ steps:
   entrypoint: 'bash'
   args:
   - '-c'
-  - 'python3 app/training_data_pipe.py'
+  - |
+  - python3 app/training_data_pipe.py &&
+  - cp -r app/prod_model/*.pickle /workspace
  
 #artifacts:
 #  objects:
