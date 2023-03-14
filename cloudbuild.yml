@@ -29,7 +29,7 @@ steps:
   ]
 artifacts:
   objects:
-    location: 'gs://prod_model/model_to_serve.pickle'
+    location: 'gs://prod_model'
     paths: ['./prod_model/*.pickle']
 
   
