@@ -32,6 +32,8 @@ artifacts:
     location: 'gs://prod_model'
     paths: ['./prod_model/*.pickle']
 
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', './prod_model/*.pickle', 'gs://prod_model']
   
 #- name: 'gcr.io/$PROJECT_ID/simple-linear-trainpipe'
 #  entrypoint: 'bash'
