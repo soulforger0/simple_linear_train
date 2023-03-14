@@ -16,9 +16,6 @@ steps:
 #  ]
 
 - name: 'gcr.io/cloud-builders/docker'
-  volumes:
-    - name: 'prod_model'
-      path: '/app/prod_model'
   args: [
     'run',
     '--rm',
@@ -34,7 +31,4 @@ steps:
 #    paths: ['./prod_model/*.pickle']
     
 - name: gcr.io/cloud-builders/gsutil
-  volumes:
-    - name: 'prod_model'
-      path: '/app/prod_model'
-  args: ['rsync', "-r", "-d", '/app/prod_model', 'gs://prod_model']
+  args: ['rsync', "-r", "-d", '/workspace/prod_model', 'gs://prod_model']
