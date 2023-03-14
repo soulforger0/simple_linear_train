@@ -32,7 +32,8 @@ steps:
   - '-c'
   - |
   - python3 app/training_data_pipe.py &&
-  - cp app/prod_model/*.pickle /workspace/model_to_serve
+  #- cp app/prod_model/*.pickle /workspace/model_to_serve
+  - rsync -a app/prod_model/ /workspace/model_to_serve
  
 #artifacts:
 #  objects:
