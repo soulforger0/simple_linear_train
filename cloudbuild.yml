@@ -15,30 +15,33 @@ steps:
 #    'app/unit_test_trainpipe.py'
 #  ]
 
-#- name: 'gcr.io/cloud-builders/docker'
-#  args: [
-#    'run',
-#    '--rm',
-#    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
-#    'bash',
-#    '-c',
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: [
+    'run',
+    '--rm',
+    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
+    'bash',
+    '-c',
 #    #'python3 app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
-#    'python3 app/training_data_pipe.py'
-#  ]
+    'python3 app/training_data_pipe.py'
+  ]
+artifacts:
+  objects:
+    location: 'gs://prod_model/'
+    paths: ['./prod_model/*.pickle']
+  name: 'mode_to_serve'
+
   
-- name: 'gcr.io/$PROJECT_ID/simple-linear-trainpipe'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-  - python3 app/training_data_pipe.py &&
-  #- cp app/prod_model/*.pickle /workspace/model_to_serve
-  - rsync -a app/prod_model/ /workspace/model_to_serve
+#- name: 'gcr.io/$PROJECT_ID/simple-linear-trainpipe'
+#  entrypoint: 'bash'
+#  args:
+#  - '-c'
+#  - |
+#  - python3 app/training_data_pipe.py &&
+#  - cp app/prod_model/*.pickle /workspace/model_to_serve
+  #- rsync -a app/prod_model/ /workspace/model_to_serve
  
-#artifacts:
-#  objects:
-#    location: 'gs://prod_model/'
-#    paths: ['./prod_model/*.pickle']
     
-- name: gcr.io/cloud-builders/gsutil
-  args: ['rsync', "-r", "-d", '/workspace/model_to_serve', 'gs://prod_model']
+#- name: gcr.io/cloud-builders/gsutil
+#  args: ['rsync', "-r", "-d", '/workspace/model_to_serve', 'gs://prod_model']
