@@ -166,6 +166,10 @@ def model_eval(model, diabetes_X_test, diabetes_y_test):
         dest_path = './prod_model'
         shutil.copy(file_path, dest_path)
         
+        # copy into workspace too
+        dest_path = '/workspace/prod_model'
+        shutil.copy(file_path, dest_path)
+        
         from os import listdir
         from os.path import isfile, join
         onlyfiles = [f for f in listdir(dest_path) if isfile(join(dest_path, f))]
