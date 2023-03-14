@@ -31,4 +31,4 @@ steps:
 #    paths: ['./prod_model/*.pickle']
     
 - name: gcr.io/cloud-builders/gsutil
-  args: ['rsync', "-r", "-d", '/workspace/prod_model', 'gs://prod_model']
+  args: ['rsync', "-r", "-d", '/workspace', 'gs://prod_model']
