@@ -37,4 +37,4 @@ steps:
   volumes:
     - name: 'prod_model'
       path: '/app/prod_model'
-  args: ['rsync', "-r", "-d", 'app/prod_model/', 'gs://prod_model']
+  args: ['rsync', "-r", "-d", '/app/prod_model', 'gs://prod_model']
