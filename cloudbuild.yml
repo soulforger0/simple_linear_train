@@ -17,6 +17,7 @@ steps:
 
 
 - name: 'gcr.io/cloud-builders/docker'
+  id: 'train_model'
   args: [
     'run',
     '--rm',
@@ -28,8 +29,8 @@ steps:
   ]
 artifacts:
   objects:
-    location: 'gs://prod_model/'
-    paths: ['./prod_model/model_to_serve.pickle']
+    location: 'gs://prod_model/model_to_serve.pickle'
+    paths: ['./prod_model/*.pickle']
 
   
 #- name: 'gcr.io/$PROJECT_ID/simple-linear-trainpipe'
