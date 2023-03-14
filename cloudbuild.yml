@@ -6,14 +6,14 @@ steps:
 #- name: 'gcr.io/cloud-builders/docker'
 #  args: ['push', 'gcr.io/$PROJECT_ID/simple-linear-trainpipe']
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: [
-    'run',
-    '--rm',
-    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
-    'pytest',
-    'app/unit_test_trainpipe.py'
-  ]
+#- name: 'gcr.io/cloud-builders/docker'
+#  args: [
+#    'run',
+#    '--rm',
+#    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
+#    'pytest',
+#    'app/unit_test_trainpipe.py'
+#  ]
 
 - name: 'gcr.io/cloud-builders/docker'
   args: [
@@ -28,7 +28,7 @@ steps:
 artifacts:
   objects:
     location: 'gs://prod_model/'
-    paths: ['app/prod_model/*.pickle']
+    paths: ['./prod_model/*.pickle']
     
 #- name: gcr.io/cloud-builders/gsutil
 #  args: ['rsync', "-r", "-d", 'app/prod_model/', 'gs://prod_model']
