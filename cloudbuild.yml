@@ -10,6 +10,15 @@ steps:
     'run',
     '--rm',
     'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
-    'python',
-    'app/training_data_pipe.py'
+    'pytest',
+    'app/unit_test_trainpipe.py'
+  ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [
+    'run',
+    '--rm',
+    'gcr.io/$PROJECT_ID/simple-linear-trainpipe',
+    'bash',
+    '-c',
+    'python3 app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
   ]
