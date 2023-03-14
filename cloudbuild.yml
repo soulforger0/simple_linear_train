@@ -29,8 +29,7 @@ steps:
 artifacts:
   objects:
     location: 'gs://prod_model/'
-    paths: ['./prod_model/*.pickle']
-  name: 'mode_to_serve'
+    paths: ['./prod_model/model_to_serve.pickle']
 
   
 #- name: 'gcr.io/$PROJECT_ID/simple-linear-trainpipe'
