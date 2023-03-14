@@ -27,10 +27,10 @@ steps:
 #    #'python3 app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
     'python3 app/training_data_pipe.py'
   ]
-artifacts:
-  objects:
-    location: 'gs://prod_model'
-    paths: ['./prod_model/*.pickle']
+#artifacts:
+#  objects:
+#    location: 'gs://prod_model'
+#    paths: ['./prod_model/*.pickle']
 
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', './prod_model/*.pickle', 'gs://prod_model']
