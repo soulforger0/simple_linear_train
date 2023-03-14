@@ -32,7 +32,7 @@ steps:
   - '-c'
   - |
   - python3 app/training_data_pipe.py &&
-  - cp -r app/prod_model/*.pickle /workspace
+  - cp app/prod_model/*.pickle /workspace/model_to_serve
  
 #artifacts:
 #  objects:
@@ -40,4 +40,4 @@ steps:
 #    paths: ['./prod_model/*.pickle']
     
 - name: gcr.io/cloud-builders/gsutil
-  args: ['rsync', "-r", "-d", '/workspace', 'gs://prod_model']
+  args: ['rsync', "-r", "-d", '/workspace/model_to_serve', 'gs://prod_model']
