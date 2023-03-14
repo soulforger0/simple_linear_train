@@ -6,9 +6,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/simple-linear-trainpipe']
 
-- name: 'gcr.io/cloud-builders/gcsfuse'
-  args: ['--implicit-dirs', 'gs://prod_model', 'app/prod_model']
-
 - name: 'gcr.io/cloud-builders/docker'
   args: [
     'run',
@@ -28,6 +25,10 @@ steps:
     #'python3 app/training_data_pipe.py && gsutil -m rsync -r -d app/prod_model gs://prod_model/'
     'python3 app/training_data_pipe.py'
   ]
-
+artifacts:
+  objects:
+    location: 'gs://prod_model/'
+    paths: ['app/prod_model/*.pickle']
+    
 #- name: gcr.io/cloud-builders/gsutil
 #  args: ['rsync', "-r", "-d", 'app/prod_model/', 'gs://prod_model']
